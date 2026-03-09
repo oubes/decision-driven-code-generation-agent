@@ -17,82 +17,82 @@ An advanced **Agentic AI** system designed to bridge the gap between natural lan
 
 ## 🚀 Key Features
 
-* **⚡ Autonomous Reasoning**: Powered by a Directed Acyclic Graph (DAG) for multi-step decision-making and state management.
-* **🛡️ AST-Based Security**: Real-time static analysis of LLM-generated code using Python's `ast` module to prevent malicious execution or data leaks.
-* **📊 Dynamic Schema Injection**: Automatically interprets Excel/CSV structures, extracting `dtypes` and column names to provide precise context to the LLM.
-* **🌙 Modern Analytics UI**: A high-contrast, dark-themed dashboard built with **FastAPI** and **Plus Jakarta Sans** for a premium analytical experience.
+* **⚡ Hybrid Reasoning**: Supports both Graph-based state machines (LangGraph) and deterministic decision loops for robust action selection.
+* **🛡️ Multi-Layer Security**: Combines keyword-based authorization with **AST-based** static code analysis to prevent malicious execution.
+* **📊 Dynamic Schema Injection**: Automatically interprets Excel structures, extracting `dtypes` and column names for the LLM context.
+* **🌙 Dark-Themed UI**: A professional, high-contrast dashboard built with **FastAPI** for real-time data interaction.
 
 ## 🏗 System Workflow
 
-The agent manages state transitions through a strictly defined graph:
+The agent manages state transitions through a strictly defined hierarchy:
 
-1. **Classify**: Validates the user question against `DENY_KEYWORDS` and authorization rules.
-2. **Analyze**: Constructs a system prompt with the dataset's live schema and generates optimized Pandas code.
-3. **Validate & Execute**: Inspects the code for forbidden nodes (imports, loops, functions) and runs it in a restricted global/local scope.
-4. **Answer**: Formats the technical DataFrame/Series results into human-readable business insights.
+1. **Authorization**: Validates the query against forbidden keywords using `app/security`.
+2. **Classification**: Categorizes the request state via `app/agent/decision`.
+3. **LLM Analysis**: Generates Pandas code using the specialized client in `app/llm`.
+4. **Validation & Execution**: Inspects code for safety before running it against the local `sales_dataset.xlsx`.
 
 ## 📂 Project Structure
 
-The repository follows a modular layout designed for enterprise maintainability:
+The repository follows a strictly modular layout with all core components nested within the `app` package:
 
 ```text
 ├── app
 │   ├── agent
-│   │   ├── actions.py      # Core node logic (classify_request, run_analysis)
-│   │   ├── graph.py        # LangGraph StateGraph definition & compilation
-│   │   └── state.py        # AgentState TypedDict definition
+│   │   ├── actions.py         # Graph node functions (classify, run_analysis)
+│   │   ├── decision.py        # Logic for decide_action and loop-based execution
+│   │   ├── graph.py           # LangGraph StateGraph definition
+│   │   └── state.py           # AgentState TypedDict
 │   ├── analysis
-│   │   ├── code_extractor.py  # Cleans and extracts Python code from LLM responses
-│   │   ├── code_runner.py     # Secure execution environment for generated code
-│   │   ├── code_validator.py  # AST-based safety verification (Security Layer)
-│   │   └── prompt_builder.py  # Injects DF schema into the system prompt
+│   │   ├── code_extractor.py  # Markdown parsing for LLM output
+│   │   ├── code_runner.py     # Secure execution environment
+│   │   ├── code_validator.py  # AST security verification
+│   │   └── prompt_builder.py  # Dynamic schema prompt engineering
 │   ├── api
-│   │   ├── routes.py       # FastAPI router for the Web UI and API
-│   │   └── schemas.py      # Pydantic models for validation
+│   │   ├── routes.py          # FastAPI endpoints
+│   │   └── schemas.py         # Pydantic request/response models
+│   ├── data
+│   │   └── sales_dataset.xlsx # Central enterprise dataset
+│   ├── llm
+│   │   └── llm_client.py      # OpenAI-compatible client configuration
+│   ├── notebook
+│   │   └── agent_walkthrough.ipynb # Step-by-step development guide
+│   ├── security
+│   │   └── authorization.py   # Keyword filtering and access control
 │   ├── utils
-│   │   ├── dataframe_loader.py # Handles data ingestion and date parsing
-│   │   └── result_formatter.py # Formats pandas objects for user display
-│   └── web
-│       └── templates       # index.html (Dark-themed Dashboard)
-├── data                    # Storage for sales_dataset.xlsx
-├── config.py               # Security rules, forbidden nodes, and model settings
-└── main.py                 # Application entry point
+│   │   ├── dataframe_loader.py # Excel processing and date parsing
+│   │   └── result_formatter.py # Human-readable output formatting
+│   ├── web
+│   │   └── templates          # index.html (Dashboard)
+│   ├── config.py              # Global settings & forbidden operation lists
+│   └── main.py                # Application entry point
+├── .env                       # API keys and environment secrets
+└── requirements.txt           # Dependency list
 
 ```
 
 ## 🔒 Security & Guardrails
 
-To ensure data integrity and system safety, the agent enforces the following:
-
-* **Node Blocking**: Using `ast.walk`, the system blocks nodes like `Import`, `With`, `While`, and `FunctionDef`.
-* **Namespace Isolation**: The execution environment is restricted to a dictionary containing only the target `df` and no built-ins like `eval` or `open`.
-* **Keyword Filtering**: Rejects queries containing keywords like "entire dataset", "all records", or "export".
+* **AST Validation**: Blocks `Import`, `With`, `While`, and `FunctionDef` nodes to prevent sandbox escapes.
+* **Keyword Deny-List**: Prevents "export", "all records", or "entire dataset" requests via `app/security/authorization.py`.
+* **Isolated LLM Scope**: The LLM only sees the schema (column names/types), never the raw data rows, ensuring privacy by design.
 
 ## 🛠 Installation & Setup
 
-### 1. Clone & Install
+### 1. Environment Setup
 
 ```bash
-git clone https://github.com/your-username/agentic-data-intelligence.git
-cd agentic-data-intelligence
+git clone https://github.com/oubes/decision-driven-code-generation-agent.git
+cd decision-driven-code-generation-agent
 pip install -r requirements.txt
 
 ```
 
-### 2. Environment Configuration
-
-Create a `.env` file in the root directory:
-
-```env
-DASHSCOPE_API_KEY=your_api_key_here
-
-```
-
-### 3. Launch the Application
+### 2. Run the Application
 
 ```bash
-uvicorn main:app --reload
+# Run from the root directory using the app module path
+uvicorn app.main:app --reload
 
 ```
 
-Navigate to `http://127.0.0.1:8000` to access the dashboard.
+Navigate to `http://127.0.0.1:8000` to interact with the **Decision Driven Agent**.
