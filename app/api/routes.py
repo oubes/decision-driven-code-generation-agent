@@ -7,7 +7,6 @@ from app.api.schemas import QuestionRequest, QuestionResponse
 
 router = APIRouter()
 
-# تأكد من المسار الصحيح للملف في مشروعك
 TEMPLATE_PATH = Path("app/web/templates/index.html")
 
 @router.get("/", response_class=HTMLResponse)
@@ -19,7 +18,6 @@ def home():
 @router.post("/ask", response_model=QuestionResponse)
 def ask_question(req: QuestionRequest):
     try:
-        # تأكد أن req.question هو الحقل الصحيح في الـ Schema الخاصة بك
         result = run_agent(req.question)
 
         return {
