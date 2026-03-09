@@ -15,6 +15,10 @@
 
 An advanced **Agentic AI** system designed to bridge the gap between natural language and data science. By leveraging **LangGraph**, it autonomously decides whether to classify, reject, or analyze data requests, generating secure and executable Python code on the fly.
 
+## 🖥️ System Interface
+
+<img width="1836" height="901" alt="Screenshot 2026-03-09 232522" src="https://github.com/user-attachments/assets/b9387d57-641d-434d-8dea-9d4dbe62e694" />
+
 ## 🚀 Key Features
 
 * **⚡ Hybrid Reasoning**: Supports both Graph-based state machines (LangGraph) and deterministic decision loops for robust action selection.
