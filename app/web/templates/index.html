@@ -44,7 +44,6 @@
             animation: slideUp 0.6s ease-out;
         }
 
-        /* Header Section */
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -65,7 +64,6 @@
             margin-top: 10px;
         }
 
-        /* Stats Row (Visual Flourish) */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -84,7 +82,6 @@
         .stat-card small { color: var(--text-muted); font-size: 11px; text-transform: uppercase; }
         .stat-card div { font-weight: 700; font-size: 18px; margin-top: 5px; color: var(--primary); }
 
-        /* Main Chat Area */
         .main-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -142,13 +139,6 @@
             box-shadow: 0 6px 20px var(--primary-glow);
         }
 
-        .ask-btn:disabled {
-            background: #475569;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Result Section */
         #result-container {
             margin-top: 30px;
             display: none;
@@ -174,7 +164,7 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        /* Examples Sidebar/Bottom */
+        /* Updated Examples Grid for 10 items */
         .examples-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -201,10 +191,8 @@
             color: white;
         }
 
-        /* Utils */
         .loader {
-            width: 18px;
-            height: 18px;
+            width: 18px; height: 18px;
             border: 2px solid #fff;
             border-bottom-color: transparent;
             border-radius: 50%;
@@ -225,7 +213,7 @@
 
 <div class="dashboard">
     <header>
-        <h1>Data Intelligence Agent</h1>
+        <h1>Decision Driven Code Generation Agent</h1>
         <p>Conversational analysis for your enterprise datasets</p>
     </header>
 
@@ -263,19 +251,43 @@
         <div class="examples-grid">
             <div class="example-item" onclick="useExample('s1')">
                 <span id="s1">What is the total revenue?</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
             <div class="example-item" onclick="useExample('s2')">
                 <span id="s2">What is the average revenue per region?</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
             <div class="example-item" onclick="useExample('s3')">
                 <span id="s3">Revenue by product_category (top 3)?</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
             <div class="example-item" onclick="useExample('s4')">
                 <span id="s4">Revenue per region per category?</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s5')">
+                <span id="s5">What is the total revenue per region?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s6')">
+                <span id="s6">What is the average revenue per product_category?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s7')">
+                <span id="s7">Which region has the highest total revenue?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s8')">
+                <span id="s8">What are the top 3 product categories by total revenue?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s9')">
+                <span id="s9">What is the total revenue per month?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="example-item" onclick="useExample('s10')">
+                <span id="s10">What is the average revenue per region per product_category?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
         </div>
     </div>
@@ -293,7 +305,6 @@
         const query = promptInput.value.trim();
         if (!query) return;
 
-        // UI Loading State
         loader.style.display = "inline-block";
         btnText.innerText = "Processing...";
         genBtn.disabled = true;
@@ -316,7 +327,7 @@
                 resultContainer.style.display = "block";
             }
         } catch (error) {
-            resultContent.innerText = "Server connection failed. Check if FastAPI is running.";
+            resultContent.innerText = "Server connection failed.";
             resultContainer.style.display = "block";
         } finally {
             loader.style.display = "none";
