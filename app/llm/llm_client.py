@@ -19,5 +19,5 @@ def ask_llm(messages, max_tokens=256, temperature=0.0):
         temperature=temperature
     )
 
-    return response.choices[0].message.content.strip()
+    return response.choices[0].message.content.strip() # type: ignore
 
