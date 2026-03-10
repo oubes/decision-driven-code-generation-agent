@@ -17,7 +17,15 @@ An advanced **Agentic AI** system designed to bridge the gap between natural lan
 
 ## 🖥️ System Interface
 
+<p align="center">
 <img width="1836" height="901" alt="Screenshot 2026-03-09 232522" src="https://github.com/user-attachments/assets/b9387d57-641d-434d-8dea-9d4dbe62e694" />
+</p>
+
+## 🏗️ System Architecture
+
+<p align="center">
+<img width="291" height="719" alt="graph_flow" src="https://github.com/user-attachments/assets/ea25aa52-53bf-4f50-901e-4fb961692211" />
+</p>
 
 ## 🚀 Key Features
 
