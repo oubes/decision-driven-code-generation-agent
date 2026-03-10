@@ -9,14 +9,7 @@ class AgentState(TypedDict):
     answered: bool
     rejection_reason: str | None
     question: str
-
-state_template: AgentState = {
-    "request_received": False,
-    "request_classified": False,
-    "authorized": None,
-    "analysis_done": False,
-    "result": None,
-    "answered": False,
-    "rejection_reason": None,
-    "question": ""
-}
+    prompt: str | None
+    raw_code: str | None
+    explained_result: Any | None
+    extracted_code: str | None
