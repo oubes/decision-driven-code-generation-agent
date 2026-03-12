@@ -65,7 +65,7 @@ def build_graph() -> StateGraph:
         route_after_run_code,
         {
             "explain": "explain",
-            "build_prompt": "build_prompt"
+            "reject": "reject"
         }
     )
 
@@ -88,6 +88,7 @@ def run_agent(question: str):
         "analysis_done": False,
         "result": None,
         "answered": False,
+        "valid_code": None,
         "rejection_reason": None,
         "prompt": None,
         "raw_code": None,

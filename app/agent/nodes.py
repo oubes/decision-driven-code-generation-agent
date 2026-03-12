@@ -37,8 +37,9 @@ def ask_llm_node(state: AgentState) -> AgentState:
 def validate_code_node(state: AgentState) -> AgentState:
     try:
         validate_code_safety(state["raw_code"])
+        state["valid_code"] = True
     except ValueError as e:
-        state["authorized"] = False
+        state["valid_code"] = False
         state["rejection_reason"] = str(e)
     return state
 
@@ -73,11 +74,11 @@ def route_after_check(state: AgentState) -> str:
     return "build_prompt"
 
 def route_after_run_code(state: AgentState) -> str:
-    if state["result"] is not None:
-        return "explain"
-    return "build_prompt"
+    if state.get("valid_code") is False or state["result"] is None:
+        return "reject"
+    return "explain"
 
 def route_after_validate(state: AgentState) -> str:
-    if state["authorized"] is False:
-        return "reject"
-    return "extract_code"
+    if state["valid_code"] is True:
+        return "extract_code"
+    return "reject"

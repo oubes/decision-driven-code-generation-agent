@@ -7,6 +7,7 @@ class AgentState(TypedDict):
     analysis_done: bool
     result: Any | None
     answered: bool
+    valid_code: bool | None
     rejection_reason: str | None
     question: str
     prompt: str | None
