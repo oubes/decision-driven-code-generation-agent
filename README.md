@@ -17,7 +17,15 @@ An advanced **Agentic AI** system designed to bridge the gap between natural lan
 
 ## 🖥️ System Interface
 
+<p align="center">
 <img width="1836" height="901" alt="Screenshot 2026-03-09 232522" src="https://github.com/user-attachments/assets/b9387d57-641d-434d-8dea-9d4dbe62e694" />
+</p>
+
+## 🏗️ System Architecture
+
+<p align="center">
+<img width="291" height="719" alt="graph_flow" src="https://github.com/user-attachments/assets/ea25aa52-53bf-4f50-901e-4fb961692211" />
+</p>
 
 ## 🚀 Key Features
 
@@ -42,35 +50,34 @@ The repository follows a strictly modular layout with all core components nested
 ```text
 ├── app
 │   ├── agent
-│   │   ├── actions.py         # Graph node functions (classify, run_analysis)
-│   │   ├── decision.py        # Logic for decide_action and loop-based execution
-│   │   ├── graph.py           # LangGraph StateGraph definition
-│   │   └── state.py           # AgentState TypedDict
+│   │   ├── nodes.py                 # Agent action nodes and conditional routing functions
+│   │   ├── graph.py                 # LangGraph StateGraph definition
+│   │   └── state.py                 # AgentState TypedDict
 │   ├── analysis
-│   │   ├── code_extractor.py  # Markdown parsing for LLM output
-│   │   ├── code_runner.py     # Secure execution environment
-│   │   ├── code_validator.py  # AST security verification
-│   │   └── prompt_builder.py  # Dynamic schema prompt engineering
+│   │   ├── code_extractor.py        # Markdown parsing for LLM output
+│   │   ├── code_runner.py           # Secure execution environment
+│   │   ├── code_validator.py        # AST security verification
+│   │   └── prompt_builder.py        # Dynamic schema prompt engineering
 │   ├── api
-│   │   ├── routes.py          # FastAPI endpoints
-│   │   └── schemas.py         # Pydantic request/response models
+│   │   ├── routes.py                # FastAPI endpoints
+│   │   └── schemas.py               # Pydantic request/response models
 │   ├── data
-│   │   └── sales_dataset.xlsx # Central enterprise dataset
+│   │   └── sales_dataset.xlsx       # Central enterprise dataset
 │   ├── llm
-│   │   └── llm_client.py      # OpenAI-compatible client configuration
+│   │   └── llm_client.py            # OpenAI-compatible client configuration
 │   ├── notebook
-│   │   └── agent_walkthrough.ipynb # Step-by-step development guide
+│   │   └── agent_walkthrough.ipynb  # Step-by-step development guide
 │   ├── security
-│   │   └── authorization.py   # Keyword filtering and access control
+│   │   └── authorization.py         # Keyword filtering and access control
 │   ├── utils
-│   │   ├── dataframe_loader.py # Excel processing and date parsing
-│   │   └── result_formatter.py # Human-readable output formatting
+│   │   ├── dataframe_loader.py      # Excel processing and date parsing
+│   │   └── result_formatter.py      # Human-readable output formatting
 │   ├── web
-│   │   └── templates          # index.html (Dashboard)
-│   ├── config.py              # Global settings & forbidden operation lists
-│   └── main.py                # Application entry point
-├── .env                       # API keys and environment secrets
-└── requirements.txt           # Dependency list
+│   │   └── templates                # index.html (Dashboard)
+│   ├── config.py                    # Global settings & forbidden operation lists
+│   └── main.py                      # Application entry point
+├── .env                             # API keys and environment secrets
+└── requirements.txt                 # Dependency list
 
 ```
 
